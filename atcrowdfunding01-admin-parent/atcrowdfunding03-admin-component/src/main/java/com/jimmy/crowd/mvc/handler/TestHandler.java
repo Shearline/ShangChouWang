@@ -23,8 +23,15 @@ public class TestHandler {
         return "target";
     }
 
-    @RequestMapping("/send/array.html")
-    public String testReceiveArrayOne(@RequestParam("array") List<Integer> array){
+    @RequestMapping("/send/array/one.html")
+    public String testReceiveArrayOne(@RequestParam("array[]") List<Integer> array){
+        for (Integer integer : array) {
+            System.out.println(integer);
+        }
+        return "target";
+    }
+    @RequestMapping("/send/array/two.html")
+    public String testReceiveArrayTwo(@RequestParam("array") List<Integer> array){
         for (Integer integer : array) {
             System.out.println(integer);
         }
