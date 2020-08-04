@@ -1,7 +1,85 @@
 <!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
-<web-app>
-  <display-name>Archetype Created Web Application</display-name>
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:spring-persist-*.xml</param-value>
+    </context-param>
+
+
+    <filter>
+        <filter-name>characterEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <!--        指定字符集-->
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <!--        强制请求使用字符集-->
+        <init-param>
+            <param-name>forceRequestEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <!--        强制响应设置字符集-->
+        <init-param>
+            <param-name>forceResponseEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <!--
+    这个Filter的执行顺序要在所有其他Filter前面
+    原因：request.setCharacterEncoding(encoding)必须要在request.getParameter()前面
+				response.setCharacterEncoding(encoding)必须要在response.getWriter()前面
+    -->
+    <filter-mapping>
+        <filter-name>characterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <servlet>
+        <servlet-name>dispatcherServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring-web-mvc.xml</param-value>
+        </init-param>
+        <!--
+        servlet默认生命周期中，创建对象是在第一次接收到请求时，
+        而DispatcherServlet创建对象后有大量的框架初始化的工作，不适合在第一次请求时来做
+        设置load-on-startup就是为了让DispatcherServlet在web启动时创建，初始化
+        -->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>dispatcherServlet</servlet-name>
+        <!--        url-pattern配置方式一：、表示拦截所有请求-->
+        <!--        <url-pattern>/</url-pattern>-->
+        <!--
+        url-pattern配置方式二：配置请求扩展名
+        优点：1、静态资源完全不经过springmvc，不需要特殊处理
+             2、可以实现伪静态的效果：表面上看起来是访问一个HTML，但实际上是经过Java运算的
+             伪静态作用：1.给黑客入侵增加难度
+                        2.有利于SEO的优化（让百度，谷歌这样的搜索引擎更容易找到）
+        缺点：不符合RESTFul风格
+        -->
+        <url-pattern>*.html</url-pattern>
+
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>dispatcherServlet</servlet-name>
+        <!--        如果一个ajax请求扩展名是html，但实际服务器给浏览器返回的是json数据，二者就不匹配了，会出现406错误-->
+        <url-pattern>*.json</url-pattern>
+    </servlet-mapping>
+
 </web-app>
