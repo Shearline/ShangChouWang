@@ -18,14 +18,17 @@
     <facet type="jpa" name="JPA">
       <configuration>
         <setting name="validation-enabled" value="true" />
-        <datasource-mapping />
+        <datasource-mapping>
+          <factory-entry name="Entities" />
+        </datasource-mapping>
         <naming-strategy-map />
       </configuration>
     </facet>
     <facet type="Spring" name="Spring">
       <configuration>
         <fileset id="fileset" name="ShangChouWang" removed="false">
-          <file>file://$MODULE_DIR$/src/main/resources/spring-presist-mybatis.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/spring-persist-mybatis.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/spring-persist-tx.xml</file>
         </fileset>
       </configuration>
     </facet>

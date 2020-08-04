@@ -2,6 +2,7 @@ package com.jimmy.crowd.test;
 
 import com.jimmy.crowd.entity.Admin;
 import com.jimmy.crowd.mapper.AdminMapper;
+import com.jimmy.crowd.service.api.AdminService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -16,7 +17,7 @@ import java.sql.SQLException;
 
 //在类上标记必要的注解，Spring整合junit
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:spring-presist-mybatis.xml"})
+@ContextConfiguration(locations = {"classpath:spring-persist-mybatis.xml", "classpath:spring-persist-tx.xml"})
 public class CrowdTest {
 
     @Autowired
@@ -24,6 +25,9 @@ public class CrowdTest {
 
     @Autowired
     private AdminMapper adminMapper;
+
+    @Autowired
+    private AdminService adminService;
 
     @Test
     public void testLog() {
@@ -50,5 +54,11 @@ public class CrowdTest {
     public void testConnection() throws SQLException {
         Connection connection = dataSource.getConnection();
         System.out.println(connection);
+    }
+
+    @Test
+    public void testTx() {
+        Admin admin = new Admin(null, "jerry", "123456", "杰瑞", "jerry@qq.com", null);
+        adminService.saveAdmin(admin);
     }
 }
