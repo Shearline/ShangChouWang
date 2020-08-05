@@ -8,5 +8,7 @@ import java.util.List;
 public interface AdminService {
     public void saveAdmin(Admin admin);
 
-    List<Admin> getAll();
+    public List<Admin> getAll();
+
+    public Admin geAdminByLoginAccount(String loginAccount, String userPswd);
 }

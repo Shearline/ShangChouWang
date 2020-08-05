@@ -1,8 +1,8 @@
 package com.jimmy.crowd.mvc.config;
 
-import ch.qos.logback.core.CoreConstants;
 import com.google.gson.Gson;
 import com.jimmy.crowd.constant.CrowdConstant;
+import com.jimmy.crowd.exception.LoginFailedException;
 import com.jimmy.crowd.util.CrowdUtil;
 import com.jimmy.crowd.util.ResultEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -19,22 +19,23 @@ import java.io.IOException;
 @ControllerAdvice
 public class CrowdExceptionResolver {
 
+    @ExceptionHandler(value = LoginFailedException.class)
+    public ModelAndView resolveMathException(LoginFailedException e, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String viewName = "admin-login";
+        return commonResolve(viewName, e, request, response);
+    }
     @ExceptionHandler(value = ArithmeticException.class)
     public ModelAndView resolveMathException(ArithmeticException e, HttpServletRequest request, HttpServletResponse response) throws IOException {
         String viewName = "system-error";
         return commonResolve(viewName, e, request, response);
     }
 
-    /**
-     * @param e
-     * @return
-     * @ExceptionHandler 将一个具体的异常类型和一个方法关联起来
-     */
     @ExceptionHandler(value = NullPointerException.class)
-    public ModelAndView resolveNullPointException(NullPointerException e, HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public ModelAndView resolveMathException(NullPointerException e, HttpServletRequest request, HttpServletResponse response) throws IOException {
         String viewName = "system-error";
         return commonResolve(viewName, e, request, response);
     }
+
 
     private ModelAndView commonResolve(String viewName, Exception exception, HttpServletRequest request, HttpServletResponse response) throws IOException {
         //1.判断当前请求类型

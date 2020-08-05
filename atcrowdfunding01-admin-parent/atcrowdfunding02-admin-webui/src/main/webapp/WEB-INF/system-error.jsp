@@ -19,8 +19,8 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/login.css">
-    <script src="jquery/jquery-3.5.1"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="jquery/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
     <style>
 
     </style>
@@ -29,7 +29,7 @@
         $(function () {
             $("#btn").click(function () {
                 //相当于浏览器的后退按钮
-                history.back();
+                window.history.back();
             });
         });
     </script>
@@ -51,7 +51,8 @@
             <%--        requestScope对应的是存放request域数据的map--%>
             ${requestScope.exception.message}
         </h3>
-        <button id="btn" style="width: 150px;margin: 50px auto 0px auto" class="btn btn-lg btn-success btn-block">点击返回上一步
+        <button id="btn" style="width: 150px;margin: 50px auto 0px auto" class="btn btn-lg btn-success btn-block">
+            点击返回上一步
         </button>
     </h2>
 

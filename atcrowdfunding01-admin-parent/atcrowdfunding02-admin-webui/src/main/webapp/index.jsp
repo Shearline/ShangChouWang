@@ -11,7 +11,7 @@
 <head>
     <title>Title</title>
     <base href="http://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/">
-    <script type="text/javascript" src="jquery/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="jquery/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="layer/layer.js"></script>
     <script type="text/javascript">
         $(function () {

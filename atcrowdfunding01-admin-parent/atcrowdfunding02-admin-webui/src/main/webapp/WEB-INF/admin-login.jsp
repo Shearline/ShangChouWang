@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/login.css">
-    <script src="jquery/jquery-3.5.1"></script>
+    <script src="jquery/jquery-2.1.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <style>
 
@@ -39,6 +39,7 @@
 
     <form action="admin/do/login.html" method="post" class="form-signin" role="form">
         <h2 class="form-signin-heading"><i class="glyphicon glyphicon-log-in"></i> 管理员登录</h2>
+        <p>${requestScope.exception.message}</p>
         <div class="form-group has-success has-feedback">
             <input type="text" name="loginAcct" class="form-control" id="inputSuccess3" placeholder="请输入登录账号" autofocus>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
