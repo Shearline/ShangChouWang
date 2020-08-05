@@ -18,8 +18,8 @@
       <module name="atcrowdfunding02-admin-webui" target="11" />
       <module name="atcrowdfunding03-admin-component" target="11" />
       <module name="atcrowdfunding04-admin-entity" target="11" />
-      <module name="atcrowdfunding05-common-util" target="1.5" />
-      <module name="atcrowdfunding06-common-reverse" target="1.5" />
+      <module name="atcrowdfunding05-common-util" target="11" />
+      <module name="atcrowdfunding06-common-reverse" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
