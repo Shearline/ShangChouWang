@@ -2,6 +2,8 @@ package com.jimmy.crowd.mvc.config;
 
 import com.google.gson.Gson;
 import com.jimmy.crowd.constant.CrowdConstant;
+import com.jimmy.crowd.exception.LoginAcctAlreadyInUseException;
+import com.jimmy.crowd.exception.LoginAcctAlreadyInUseForUpdateException;
 import com.jimmy.crowd.exception.LoginFailedException;
 import com.jimmy.crowd.util.CrowdUtil;
 import com.jimmy.crowd.util.ResultEntity;
@@ -19,11 +21,30 @@ import java.io.IOException;
 @ControllerAdvice
 public class CrowdExceptionResolver {
 
+//    @ExceptionHandler(value = LoginFailedException.class)
+//    public ModelAndView resolveMathException(LoginFailedException e, HttpServletRequest request, HttpServletResponse response) throws IOException {
+//        String viewName = "admin-login";
+//        return commonResolve(viewName, e, request, response);
+//    }
+
+    @ExceptionHandler(value = LoginAcctAlreadyInUseForUpdateException.class)
+    public ModelAndView resolveLoginAcctAlreadyInUseForUpdateException(LoginAcctAlreadyInUseForUpdateException e, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String viewName = "system-error";
+        return commonResolve(viewName, e, request, response);
+    }
+
+    @ExceptionHandler(value = LoginAcctAlreadyInUseException.class)
+    public ModelAndView resolveLoginAcctAlreadyInUseException(LoginAcctAlreadyInUseException e, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String viewName = "admin-add";
+        return commonResolve(viewName, e, request, response);
+    }
+
     @ExceptionHandler(value = LoginFailedException.class)
-    public ModelAndView resolveMathException(LoginFailedException e, HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public ModelAndView resolveLoginFailedException(LoginFailedException e, HttpServletRequest request, HttpServletResponse response) throws IOException {
         String viewName = "admin-login";
         return commonResolve(viewName, e, request, response);
     }
+
     @ExceptionHandler(value = ArithmeticException.class)
     public ModelAndView resolveMathException(ArithmeticException e, HttpServletRequest request, HttpServletResponse response) throws IOException {
         String viewName = "system-error";

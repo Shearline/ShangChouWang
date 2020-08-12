@@ -130,6 +130,7 @@
 <body>
 <a href="test/ssm.html">测试SSM整合的环境</a>
 <br/>
+<a href="admin/to/login/page.html">登录页面</a>
 
 <button id="btn1">Send [5, 8, 12] One</button>
 <br/>

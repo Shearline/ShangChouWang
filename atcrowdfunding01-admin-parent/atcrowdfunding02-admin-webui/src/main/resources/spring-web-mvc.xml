@@ -34,5 +34,24 @@
             }
             -->
     <mvc:view-controller path="/admin/to/login/page.html" view-name="admin-login"/>
+    <mvc:view-controller path="/admin/to/main/page.html" view-name="admin-main"/>
+    <mvc:view-controller path="/admin/to/add/page.html" view-name="admin-add"/>
+
+    <!--    注册拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--
+            mvc:mapping  配置要拦截的资源
+            /*：一层路径
+            /**：多层路径
+            -->
+            <mvc:mapping path="/**"/>
+            <!--            配置不拦截的资源-->
+            <mvc:exclude-mapping path="/admin/to/login/page.html"/>
+            <mvc:exclude-mapping path="/admin/do/login.html"/>
+            <mvc:exclude-mapping path="/admin/do/logout.html"/>
+            <bean class="com.jimmy.crowd.mvc.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
 </beans>

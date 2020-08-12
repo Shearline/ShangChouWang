@@ -61,4 +61,11 @@ public class CrowdTest {
         Admin admin = new Admin(null, "jerry", "123456", "杰瑞", "jerry@qq.com", null);
         adminService.saveAdmin(admin);
     }
+
+    @Test
+    public void test() {
+        for (int i = 0; i < 238; i++) {
+            adminMapper.insert(new Admin(null, "loginAcct" + i, "userPswd" + i, "userName" + i, "email" + i, null));
+        }
+    }
 }
