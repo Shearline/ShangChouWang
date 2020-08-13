@@ -1,7 +1,9 @@
 package com.jimmy.crowd.test;
 
 import com.jimmy.crowd.entity.Admin;
+import com.jimmy.crowd.entity.Role;
 import com.jimmy.crowd.mapper.AdminMapper;
+import com.jimmy.crowd.mapper.RoleMapper;
 import com.jimmy.crowd.service.api.AdminService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,6 +30,9 @@ public class CrowdTest {
 
     @Autowired
     private AdminService adminService;
+
+    @Autowired
+    private RoleMapper roleMapper;
 
     @Test
     public void testLog() {
@@ -66,6 +71,13 @@ public class CrowdTest {
     public void test() {
         for (int i = 0; i < 238; i++) {
             adminMapper.insert(new Admin(null, "loginAcct" + i, "userPswd" + i, "userName" + i, "email" + i, null));
+        }
+    }
+
+    @Test
+    public void testRoleSave(){
+        for (int i = 0; i < 235; i++) {
+            roleMapper.insert(new Role(null,"role"+i));
         }
     }
 }
