@@ -1,3 +1,28 @@
+//声明专门的函数，显示确认的模态框
+function showConfirmModal(roleArray) {
+    //打开模态框
+    $("#confirmModal").modal("show");
+
+
+    //清除旧的数据
+    $("#roleNameDiv").empty();
+    //在全局变量范围创建数组来存放角色id
+    window.roleIdArray = [];
+    //遍历roleArray数组
+
+    for (var i = 0; i < roleArray.length; i++) {
+        var role = roleArray[i];
+        var roleName = role.roleName;
+        $("#roleNameDiv").append(roleName + "<br/>");
+
+        var roleId = role.roleId;
+
+        //调用数组对象的push()方法存入新元素
+        window.roleIdArray.push(roleId);
+
+    }
+}
+
 //执行分页，生成页面效果，任何时候调用这个函数都会重新加载页面
 function generatePage() {
     //1. 获取分页数据
@@ -72,11 +97,12 @@ function fillTableBody(pageInfo) {
         var roleId = role.id;
         var roleName = role.name;
         var numberTd = "<td>" + (i + 1) + "</td>";
-        var checkboxTd = "<td><input type='checkbox'></td>";
+        var checkboxTd = "<td><input id='" + roleId + "' class='itemBox' type='checkbox'></td>";
         var roleNameTd = "<td>" + roleName + "</td>";
         var checkBtn = "<button type='button' class='btn btn-success btn-xs'><i class=' glyphicon glyphicon-check'></i></button>";
-        var pencilBtn = "<button type='button' class='btn btn-primary btn-xs'><i class=' glyphicon glyphicon-pencil'></i></button>";
-        var removeBtn = "<button type='button' class='btn btn-danger btn-xs'><i class=' glyphicon glyphicon-remove'></i></button>";
+        //通过button标签的id属性（别的属性也可以）把roleId传递到button按钮的单击相应函数中。
+        var pencilBtn = "<button id='" + roleId + "' type='button' class='btn btn-primary btn-xs pencilBtn'><i class=' glyphicon glyphicon-pencil'></i></button>";
+        var removeBtn = "<button id='" + roleId + "' type='button' class='btn btn-danger btn-xs removeBtn'><i class=' glyphicon glyphicon-remove'></i></button>";
         var buttonTd = "<td>" + checkBtn + " " + pencilBtn + " " + removeBtn + "</td>"
         var tr = "<tr>" + numberTd + checkboxTd + roleNameTd + buttonTd + "</tr>";
 
