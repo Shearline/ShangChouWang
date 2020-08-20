@@ -15,6 +15,7 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+
     <!--    配置基于XML的异常映射-->
     <bean id="simpleMappingExceptionResolver"
           class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
@@ -37,6 +38,7 @@
     <mvc:view-controller path="/admin/to/main/page.html" view-name="admin-main"/>
     <mvc:view-controller path="/admin/to/add/page.html" view-name="admin-add"/>
     <mvc:view-controller path="/role/to/page.html" view-name="role-page"/>
+    <mvc:view-controller path="/menu/to/page.html" view-name="menu-page"/>
 
     <!--    注册拦截器-->
     <mvc:interceptors>

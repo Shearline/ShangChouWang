@@ -51,7 +51,7 @@
             <%--        requestScope对应的是存放request域数据的map--%>
             ${requestScope.exception.message}
         </h3>
-        <button id="btn" style="width: 150px;margin: 50px auto 0px auto" class="btn btn-lg btn-success btn-block">
+        <button id="btn" style="width: 200px;margin: 50px auto 0px auto" class="btn btn-lg btn-success btn-block">
             点击返回上一步
         </button>
     </h2>
