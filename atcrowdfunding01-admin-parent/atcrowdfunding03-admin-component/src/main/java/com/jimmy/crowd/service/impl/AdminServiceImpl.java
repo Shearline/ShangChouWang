@@ -129,5 +129,20 @@ public class AdminServiceImpl implements AdminService {
             }
         }
     }
+
+    @Override
+    public void saveAdminRoleRelationship(Integer adminId, List<Integer> roleIdList) {
+        //1.根据adminId删除旧的关联关系数据
+        adminMapper.deleteOldRelationship(adminId);
+        System.out.println("2");
+
+        //2.根据roleList和adminId保存新的关联关系
+        System.out.println(roleIdList);
+
+        if (roleIdList != null && roleIdList.size() > 0) {
+            adminMapper.insertNewRelationship(adminId, roleIdList);
+            System.out.println("3");
+        }
+    }
 }
 
