@@ -198,6 +198,7 @@
                 <version>${jimmy.spring.security.version}</version>
             </dependency>
 
+
         </dependencies>
     </dependencyManagement>
 

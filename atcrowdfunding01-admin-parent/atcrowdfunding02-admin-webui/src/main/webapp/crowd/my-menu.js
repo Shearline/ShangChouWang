@@ -1,4 +1,4 @@
-//Éú³ÉÊ÷ÐÎ½á¹¹µÄº¯Êý
+//ç”Ÿæˆæ ‘å½¢ç»“æž„çš„å‡½æ•°
 
 function generateTree() {
     $.ajax({
@@ -8,7 +8,7 @@ function generateTree() {
         "success": function (response) {
             var result = response.result;
             if (result == "SUCCESS") {
-                // 2.´´½¨ JSON ¶ÔÏóÓÃÓÚ´æ´¢¶Ô zTree Ëù×öµÄÉèÖÃ
+                // 2.åˆ›å»º JSON å¯¹è±¡ç”¨äºŽå­˜å‚¨å¯¹ zTree æ‰€åšçš„è®¾ç½®
                 var setting = {
                     "view": {
                         "addDiyDom": myAddDiyDom,
@@ -21,9 +21,9 @@ function generateTree() {
                         }
                     }
                 };
-                // 3.´ÓÏìÓ¦ÌåÖÐ»ñÈ¡ÓÃÀ´Éú³ÉÊ÷ÐÎ½á¹¹µÄ JSON Êý¾Ý
+                // 3.ä»Žå“åº”ä½“ä¸­èŽ·å–ç”¨æ¥ç”Ÿæˆæ ‘å½¢ç»“æž„çš„ JSON æ•°æ®
                 var zNodes = response.data;
-                // 4.³õÊ¼»¯Ê÷ÐÎ½á¹¹
+                // 4.åˆå§‹åŒ–æ ‘å½¢ç»“æž„
                 $.fn.zTree.init($("#treeDemo"), setting, zNodes);
             }
             if (result == "FAILED") {
@@ -43,22 +43,22 @@ function myAddDiyDom(treeId, treeNode) {
 
 }
 
-//ÔÚÊó±êÀë¿ª½Úµã·¶Î§Ê±É¾³ý°´Å¥×é
+//åœ¨é¼ æ ‡ç¦»å¼€èŠ‚ç‚¹èŒƒå›´æ—¶åˆ é™¤æŒ‰é’®ç»„
 function myRemoveHoverDom(treeId, treeNode) {
     var btnGroupId = treeNode.tId + "_btnGrp";
     $("#" + btnGroupId).remove();
 }
 
-//ÔÚÊó±êÒÆÈë½Úµã·¶Î§Ê±Ìí¼Ó°´Å¥×é
+//åœ¨é¼ æ ‡ç§»å…¥èŠ‚ç‚¹èŒƒå›´æ—¶æ·»åŠ æŒ‰é’®ç»„
 function myAddHoverDom(treeId, treeNode) {
     var btnGroupId = treeNode.tId + "_btnGrp";
 
     if ($("#" + btnGroupId).length > 0) {
         return;
     }
-    var addBtn = "<a id='" + treeNode.id + "' class='addBtn btn btn-info dropdown-toggle btn-xs' style='margin-left:10px;padding-top:0px;' href='#' title='Ìí¼Ó×Ó½Úµã'>&nbsp;&nbsp;<i class='fa fa-fw fa-plus rbg '></i></a>";
-    var removeBtn = "<a id='" + treeNode.id + "' class='removeBtn btn btn-info dropdown-toggle btn-xs' style='margin-left:10px;padding-top:0px;' href='#' title='É¾³ý½Úµã '>&nbsp;&nbsp;<i class='fa fa-fw fa-times rbg '></i></a>";
-    var editBtn = "<a id='" + treeNode.id + "' class='editBtn btn btn-info dropdown-toggle btn-xs' style='margin-left:10px;padding-top:0px;' href='#' title='ÐÞ¸Ä½Úµã '>&nbsp;&nbsp;<i class='fa fa-fw fa-edit rbg '></i></a>";
+    var addBtn = "<a id='" + treeNode.id + "' class='addBtn btn btn-info dropdown-toggle btn-xs' style='margin-left:10px;padding-top:0px;' href='#' title='æ·»åŠ å­èŠ‚ç‚¹'>&nbsp;&nbsp;<i class='fa fa-fw fa-plus rbg '></i></a>";
+    var removeBtn = "<a id='" + treeNode.id + "' class='removeBtn btn btn-info dropdown-toggle btn-xs' style='margin-left:10px;padding-top:0px;' href='#' title='åˆ é™¤èŠ‚ç‚¹ '>&nbsp;&nbsp;<i class='fa fa-fw fa-times rbg '></i></a>";
+    var editBtn = "<a id='" + treeNode.id + "' class='editBtn btn btn-info dropdown-toggle btn-xs' style='margin-left:10px;padding-top:0px;' href='#' title='ä¿®æ”¹èŠ‚ç‚¹ '>&nbsp;&nbsp;<i class='fa fa-fw fa-edit rbg '></i></a>";
 
     var level = treeNode.level;
 
