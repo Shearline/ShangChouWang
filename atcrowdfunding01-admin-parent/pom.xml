@@ -20,7 +20,7 @@
         <!-- 声明属性，对 Spring 的版本进行统一管理 -->
         <jimmy.spring.version>4.3.20.RELEASE</jimmy.spring.version>
         <!-- 声明属性，对 SpringSecurity 的版本进行统一管理 -->
-        <jimmy.spring.security.version>4.2.10.RELEASE</jimmy.spring.security.version>
+        <jimmy.spring.security.version>5.2.10.RELEASE</jimmy.spring.security.version>
     </properties>
 
 
